@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.memory.me.rxtest.rx.Subscriber2Ob;
 
 import java.util.concurrent.TimeUnit;
@@ -14,6 +18,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,12 +29,46 @@ public class MainActivity extends AppCompatActivity {
     Button mButton;
     @InjectView(R.id.button2)
     Button mButton2;
+    @InjectView(R.id.editText)
+    EditText mEditText;
+    @InjectView(R.id.textView)
+    TextView mTextView;
+    @InjectView(R.id.timer)
+    TextView mTimer;
+    Subscription timerOb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+
+        RxView.clicks(mTextView).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                onclick();
+            }
+        });
+
+        RxView.clicks(mTimer).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                if (timerOb == null) {
+                    timerOb = Observable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Action1<Long>() {
+                                @Override
+                                public void call(Long aLong) {
+                                    mTimer.setText("时间" + aLong);
+                                }
+                            });
+
+                } else {
+                    timerOb.unsubscribe();
+                }
+
+            }
+        });
+
 
     }
 
@@ -40,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    public void onclick() {
+        Toast.makeText(this, "aaaa", Toast.LENGTH_LONG).show();
+        ;
     }
 
     /**

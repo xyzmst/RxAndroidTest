@@ -17,6 +17,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Small Text"/>
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="模拟定时器"
+        android:textColor="@android:color/black"/>
+
+
 </LinearLayout>
 
 
