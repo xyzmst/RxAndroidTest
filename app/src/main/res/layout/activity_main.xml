@@ -32,30 +32,56 @@
         android:layout_height="wrap_content"
         android:text="文件"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="flatmap流"/>
+
+        <CheckBox
+            android:id="@+id/f1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="f1"/>
+
+        <CheckBox
+            android:id="@+id/f2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="f2"/>
+
+        <CheckBox
+            android:id="@+id/f3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="f3"/>
+    </LinearLayout>
+
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="flatmap流"/>
+        android:text="empty"/>
 
-    <CheckBox
-        android:id="@+id/f1"
+    <Button
+        android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="f1"/>
+        android:text="enum"/>
 
-    <CheckBox
-        android:id="@+id/f2"
+    <Button
+        android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="f2"/>
+        android:text="上一个observable订阅完成下一个才继续"/>
 
-    <CheckBox
-        android:id="@+id/f3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="f3"/>
 </LinearLayout>
